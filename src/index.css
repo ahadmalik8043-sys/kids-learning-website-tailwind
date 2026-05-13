@@ -1,0 +1,14 @@
+/* Google Font Import - Must come before Tailwind */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+/* Custom animations */
+@keyframes floatImg {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* .animate-float {
+  animation: floatImg 4s ease-in-out infinite;
+} */
