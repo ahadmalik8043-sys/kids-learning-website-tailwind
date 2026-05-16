@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="BrightMinds – making learning joyful for kids aged 5–14. Explore interactive lessons in Maths, Science, English, Art and Geography." />
     <title>BrightMinds – Fun Learning for Kids</title>
+    <script>
+      (function() {
+        // Professional theme injection to avoid FOUC
+        const saved = localStorage.getItem('theme');
+        const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark');
+        document.documentElement.classList.add(theme);
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+    <style>
+      /* Smooth transitions for a premium feel */
+      html { transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
   </head>
   <body>
     <div id="root"></div>

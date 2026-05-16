@@ -1,14 +1,65 @@
-/* Google Font Import - Must come before Tailwind */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
-
 @import "tailwindcss";
 
-/* Custom animations */
-@keyframes floatImg {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+@theme {
+  --font-nunito: "Nunito", sans-serif;
+
+  /* Custom Colors for Professional Theme Management */
+  --color-brand-primary: #FF6B35;
+  --color-brand-secondary: #4ECDC4;
+  --color-brand-accent: #FFE66D;
+  
+  /* Semantic Theme Variables */
+  --color-bg-page: #FFF9F0;
+  --color-bg-page-alt: #F9FAFB;
+  --color-bg-section: #FFFFFF;
+  --color-text-page: #111827;
+  --color-text-muted: #4B5563;
+  --color-bg-card: #FFFFFF;
+  --color-border-subtle: #F3F4F6;
+  --color-input-bg: #F9FAFB;
+  --color-input-border: #E5E7EB;
+
+  @keyframes floatImg {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  
+  --animate-float: floatImg 4s ease-in-out infinite;
 }
 
-/* .animate-float {
-  animation: floatImg 4s ease-in-out infinite;
-} */
+/* Professional Dark Mode Overrides */
+.dark {
+  --color-bg-page: #1A1A2E;
+  --color-bg-page-alt: rgba(15, 52, 96, 0.2);
+  --color-bg-section: rgba(15, 52, 96, 0.3);
+  --color-text-page: #FFFFFF;
+  --color-text-muted: #B2BEC3;
+  --color-bg-card: #111127;
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-input-bg: #1A1A2E;
+  --color-input-border: rgba(255, 255, 255, 0.05);
+}
+
+:root {
+  @apply font-nunito transition-colors duration-300;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-page);
+}
+
+body {
+  @apply m-0 p-0 overflow-x-hidden transition-colors duration-300;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-page);
+}
+
+/* Base card style that automatically adapts */
+.card-base {
+  @apply rounded-[2.5rem] border transition-all duration-300 shadow-xl;
+  background-color: var(--color-bg-card);
+  border-color: var(--color-border-subtle);
+}
+
+.card-base:hover {
+  @apply shadow-2xl -translate-y-2;
+}

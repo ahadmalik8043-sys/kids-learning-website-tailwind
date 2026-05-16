@@ -1,121 +1,124 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
+
+const links = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/about', label: 'About' },
+  { to: '/subjects', label: 'Subjects' },
+  { to: '/services', label: 'Courses' },
+  { to: '/dashboard', label: 'Dashboard' },
+];
+
+const moreLinks = [
+  { to: '/reviews', label: 'Reviews' },
+  { to: '/cart', label: 'Cart' },
+  { to: '/profile', label: 'Profile' },
+  { to: '/contact', label: 'Contact' },
+];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
-  useEffect(() => {
-    const saved = localStorage.getItem('brightminds-theme');
-    if (saved === 'dark') {
-      document.documentElement.classList.add('dark');
-      setDarkMode(true);
-    }
-  }, []);
-
-  function toggleMenu() {
-    setMenuOpen(prev => !prev);
-  }
-
-  function toggleTheme() {
-    const isDark = document.documentElement.classList.contains('dark');
-    if (isDark) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('brightminds-theme', 'light');
-      setDarkMode(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('brightminds-theme', 'dark');
-      setDarkMode(true);
-    }
-  }
-
-  function closeMenu() {
-    setMenuOpen(false);
-  }
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `px-4 py-2 font-black text-[0.95rem] rounded-xl transition-all duration-300 ${
+      isActive
+        ? 'bg-[#FF6B35] text-white'
+        : 'text-[var(--color-text-page)] hover:bg-[#FF6B35]/10 hover:text-[#FF6B35]'
+    }`;
 
   return (
-    <nav className="sticky top-0 z-[1000] flex items-center justify-between h-[68px] px-9 bg-white dark:bg-[#16213E] shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300">
-      <Link to="/" className="text-2xl font-black text-[#FF6B35] tracking-tight">
-        🌟 BrightMinds
-      </Link>
+    <nav className="sticky top-0 z-[100] w-full h-[80px] bg-[var(--color-bg-page)] border-b border-[var(--color-border-subtle)] transition-all duration-300">
+      <div className="max-w-[1300px] h-full mx-auto px-6 md:px-10 flex items-center justify-between">
+        {/* Logo */}
+        <NavLink to="/" className="text-2xl font-black text-[#FF6B35] tracking-tight hover:scale-105 transition-transform no-underline">
+          🌟 BrightMinds
+        </NavLink>
 
-      <button 
-        className="hidden max-md:block text-[1.7rem] text-[#2D3436] dark:text-[#F0F0F0] p-1 px-2 bg-transparent border-none cursor-pointer hover:text-[#FF6B35] transition-colors duration-300"
-        onClick={toggleMenu}
-      >
-        {menuOpen ? '✕' : '☰'}
-      </button>
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex items-center gap-2">
+          {links.map(link => (
+            <NavLink key={link.to} to={link.to} end={link.end} className={linkClass}>
+              {link.label}
+            </NavLink>
+          ))}
 
-      <ul className={`flex items-center gap-7 list-none m-0 p-0 max-md:${menuOpen ? 'flex' : 'hidden'} max-md:absolute max-md:top-[68px] max-md:left-0 max-md:w-full max-md:bg-white dark:max-md:bg-[#16213E] max-md:flex-col max-md:items-start max-md:pt-4 max-md:px-6 max-md:pb-6 max-md:gap-1 max-md:shadow-[0_4px_20px_rgba(0,0,0,0.12)]`}>
-        <li className="max-md:w-full">
-          <Link 
-            to="/" 
-            onClick={closeMenu}
-            className="font-semibold text-[0.95rem] text-[#2D3436] dark:text-[#F0F0F0] py-1.5 px-0 hover:text-[#FF6B35] transition-colors duration-300 max-md:block max-md:py-2.5 max-md:border-b max-md:border-[#DFE6E9] dark:max-md:border-[#2D3436]"
-          >
-            Home
-          </Link>
-        </li>
-        <li className="max-md:w-full">
-          <Link 
-            to="/subjects" 
-            onClick={closeMenu}
-            className="font-semibold text-[0.95rem] text-[#2D3436] dark:text-[#F0F0F0] py-1.5 px-0 hover:text-[#FF6B35] transition-colors duration-300 max-md:block max-md:py-2.5 max-md:border-b max-md:border-[#DFE6E9] dark:max-md:border-[#2D3436]"
-          >
-            Subjects
-          </Link>
-        </li>
-        <li className="max-md:w-full">
-          <Link 
-            to="/services" 
-            onClick={closeMenu}
-            className="font-semibold text-[0.95rem] text-[#2D3436] dark:text-[#F0F0F0] py-1.5 px-0 hover:text-[#FF6B35] transition-colors duration-300 max-md:block max-md:py-2.5 max-md:border-b max-md:border-[#DFE6E9] dark:max-md:border-[#2D3436]"
-          >
-            Courses
-          </Link>
-        </li>
-        <li className="max-md:w-full">
-          <Link 
-            to="/dashboard" 
-            onClick={closeMenu}
-            className="font-semibold text-[0.95rem] text-[#2D3436] dark:text-[#F0F0F0] py-1.5 px-0 hover:text-[#FF6B35] transition-colors duration-300 max-md:block max-md:py-2.5 max-md:border-b max-md:border-[#DFE6E9] dark:max-md:border-[#2D3436]"
-          >
-            Dashboard
-          </Link>
-        </li>
-        <li className="max-md:w-full">
-          <Link 
-            to="/contact" 
-            onClick={closeMenu}
-            className="font-semibold text-[0.95rem] text-[#2D3436] dark:text-[#F0F0F0] py-1.5 px-0 hover:text-[#FF6B35] transition-colors duration-300 max-md:block max-md:py-2.5 max-md:border-b max-md:border-[#DFE6E9] dark:max-md:border-[#2D3436]"
-          >
-            Contact
-          </Link>
-        </li>
-        <li className="max-md:w-full">
-          <Link to="/login" onClick={closeMenu}>
-            <button className="font-nunito font-bold text-base bg-[#FF6B35] text-white border-none rounded-[10px] py-2 px-[18px] cursor-pointer transition-all duration-300 hover:bg-[#e55a26] hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]">
-              Login
+          {/* More Dropdown */}
+          <div className="relative">
+            <button 
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="px-4 py-2 font-black text-[0.95rem] rounded-xl text-[var(--color-text-page)] hover:bg-[#FF6B35]/10 hover:text-[#FF6B35] transition-all flex items-center gap-1"
+            >
+              More {dropdownOpen ? '▲' : '▼'}
             </button>
-          </Link>
-        </li>
-        <li className="max-md:w-full">
-          <Link to="/signup" onClick={closeMenu}>
-            <button className="font-nunito font-bold text-base bg-transparent text-[#FF6B35] border-2 border-[#FF6B35] rounded-[10px] py-2 px-[18px] cursor-pointer transition-all duration-300 hover:bg-[#FF6B35] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]">
-              Sign Up
-            </button>
-          </Link>
-        </li>
-        <li className="max-md:w-full">
+            {dropdownOpen && (
+              <div className="absolute top-full right-0 mt-2 w-[180px] bg-[var(--color-bg-card)] rounded-2xl shadow-2xl border border-[var(--color-border-subtle)] p-2 flex flex-col gap-1 overflow-hidden animate-in fade-in zoom-in duration-200">
+                {moreLinks.map(link => (
+                  <NavLink 
+                    key={link.to} 
+                    to={link.to} 
+                    onClick={() => setDropdownOpen(false)}
+                    className={linkClass}
+                  >
+                    {link.label}
+                  </NavLink>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="h-6 w-px bg-[var(--color-border-subtle)] mx-4"></div>
+
+          <NavLink to="/login" className="px-6 py-2.5 font-black text-sm bg-[#FF6B35] text-white rounded-xl shadow-lg shadow-[#FF6B35]/20 hover:scale-105 active:scale-95 transition-all no-underline">
+            Login
+          </NavLink>
+
           <button 
-            className="font-nunito font-bold text-xs bg-transparent text-[#FF6B35] border-2 border-[#FF6B35] rounded-md py-1 px-2.5 cursor-pointer transition-all duration-300 hover:bg-[#FF6B35] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]"
             onClick={toggleTheme}
+            className="w-10 h-10 rounded-xl bg-[var(--color-bg-page-alt)] flex items-center justify-center hover:bg-[#FF6B35]/10 transition-all text-xl ml-2"
           >
-            {darkMode ? '☀️' : '🌙'}
+            {theme === 'light' ? '🌙' : '☀️'}
           </button>
-        </li>
-      </ul>
+        </div>
+
+        {/* Mobile Toggle */}
+        <button 
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+        >
+          <span className={`w-6 h-1 bg-[#FF6B35] rounded-full transition-all ${menuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
+          <span className={`w-6 h-1 bg-[#FF6B35] rounded-full transition-all ${menuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`w-6 h-1 bg-[#FF6B35] rounded-full transition-all ${menuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="lg:hidden absolute top-[80px] left-0 w-full bg-[var(--color-bg-page)] border-b border-[var(--color-border-subtle)] p-6 flex flex-col gap-3 shadow-2xl animate-in slide-in-from-top duration-300">
+          {[...links, ...moreLinks].map(link => (
+            <NavLink 
+              key={link.to} 
+              to={link.to} 
+              onClick={() => setMenuOpen(false)}
+              className={linkClass}
+            >
+              {link.label}
+            </NavLink>
+          ))}
+          <div className="h-px bg-[var(--color-border-subtle)] my-2"></div>
+          <NavLink to="/login" className="py-4 text-center font-black bg-[#FF6B35] text-white rounded-2xl no-underline">
+            Login
+          </NavLink>
+          <button 
+            onClick={toggleTheme}
+            className="py-4 font-black border-2 border-[#FF6B35] text-[#FF6B35] rounded-2xl bg-[var(--color-bg-card)]"
+          >
+            Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+          </button>
+        </div>
+      )}
     </nav>
   );
 }

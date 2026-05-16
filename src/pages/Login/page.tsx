@@ -3,109 +3,65 @@ import { Link } from 'react-router-dom';
 export default function Login() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    alert('Login successful! Redirecting to dashboard...');
+    alert('Login successful! Welcome to the adventure.');
   }
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-130px)] py-10 px-5">
-      <form 
-        id="login-form" 
-        onSubmit={handleSubmit} 
-        noValidate
-        className="bg-white dark:bg-[#16213E] p-10 rounded-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.12)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] w-full max-w-[440px]"
-      >
-        <div className="text-center mb-7">
-          <span className="text-5xl">👋</span>
-          <h2 className="text-[1.85rem] font-extrabold text-[#2D3436] dark:text-[#F0F0F0] mt-2 mb-2.5">
-            Welcome Back!
-          </h2>
-          <p className="text-[#636E72] dark:text-[#B2BEC3] text-base m-0">
-            Log in to continue your adventure.
-          </p>
-        </div>
+    <main className="min-h-[calc(100vh-80px)] flex items-center justify-center p-6 transition-colors duration-500">
+      <div className="w-full max-w-[500px] relative">
+        {/* Decorative elements */}
+        <div className="absolute -top-12 -left-12 w-24 h-24 bg-[#FF6B35]/20 rounded-full blur-2xl animate-pulse"></div>
+        <div className="absolute -bottom-12 -right-12 w-24 h-24 bg-[#4ECDC4]/20 rounded-full blur-2xl animate-pulse-slow"></div>
 
-        <div className="mb-4">
-          <label 
-            htmlFor="login-email"
-            className="block font-bold text-[0.9rem] text-[#636E72] dark:text-[#B2BEC3] mb-1.5"
-          >
-            Email Address
-          </label>
-          <input 
-            type="email" 
-            id="login-email" 
-            name="email" 
-            placeholder="you@example.com" 
-            required 
-            className="w-full py-2.5 px-3.5 border-2 border-[#DFE6E9] dark:border-[#2D3436] rounded-[10px] font-nunito text-base bg-[#FFF9F0] dark:bg-[#1A1A2E] text-[#2D3436] dark:text-[#F0F0F0] transition-all duration-300 outline-none focus:border-[#FF6B35] focus:shadow-[0_0_0_3px_rgba(255,107,53,0.15)] focus:bg-white dark:focus:bg-[#16213E]"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label 
-            htmlFor="login-password"
-            className="block font-bold text-[0.9rem] text-[#636E72] dark:text-[#B2BEC3] mb-1.5"
-          >
-            Password
-          </label>
-          <input 
-            type="password" 
-            id="login-password" 
-            name="password" 
-            placeholder="Enter your password" 
-            required 
-            className="w-full py-2.5 px-3.5 border-2 border-[#DFE6E9] dark:border-[#2D3436] rounded-[10px] font-nunito text-base bg-[#FFF9F0] dark:bg-[#1A1A2E] text-[#2D3436] dark:text-[#F0F0F0] transition-all duration-300 outline-none focus:border-[#FF6B35] focus:shadow-[0_0_0_3px_rgba(255,107,53,0.15)] focus:bg-white dark:focus:bg-[#16213E]"
-          />
-        </div>
-
-        <div className="flex justify-between items-center mb-5">
-          <label className="flex items-center gap-2 text-[0.9rem] cursor-pointer m-0">
-            <input 
-              type="checkbox" 
-              id="remember-me" 
-              name="remember" 
-              className="w-auto"
-            />
-            <span className="text-[#636E72] dark:text-[#B2BEC3]">Remember me</span>
-          </label>
-          <a 
-            href="#" 
-            className="text-[0.88rem] text-[#FF6B35] font-bold hover:text-[#e55a26] transition-colors duration-300"
-          >
-            Forgot Password?
-          </a>
-        </div>
-
-        <button 
-          type="submit" 
-          className="w-full font-nunito font-bold text-[1.2rem] bg-[#FF6B35] text-white border-none rounded-[18px] py-3.5 px-9 cursor-pointer transition-all duration-300 hover:bg-[#e55a26] hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]"
+        <form 
+          onSubmit={handleSubmit}
+          className="relative z-10 bg-[var(--color-bg-card)] p-10 md:p-14 rounded-[3rem] border border-[var(--color-border-subtle)] shadow-2xl flex flex-col gap-8"
         >
-          Login 🚀
-        </button>
+          <div className="text-center">
+            <span className="text-6xl mb-6 block animate-bounce">👋</span>
+            <h1 className="text-3xl md:text-4xl font-black mb-2 text-[var(--color-text-page)]">Welcome Back!</h1>
+            <p className="text-[var(--color-text-muted)] font-bold">Log in to continue your adventure.</p>
+          </div>
 
-        <div className="text-center mt-6">
-          <p className="m-0 text-[0.92rem] text-[#636E72] dark:text-[#B2BEC3]">
-            Don't have an account?{' '}
-            <Link 
-              to="/signup" 
-              className="text-[#FF6B35] font-bold hover:text-[#e55a26] transition-colors duration-300"
-            >
-              Sign Up Free
-            </Link>
-          </p>
-        </div>
+          <div className="space-y-5">
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className="ml-1 text-xs font-black text-[var(--color-text-muted)] uppercase tracking-widest">Email Address</label>
+              <input 
+                type="email" 
+                id="email" 
+                placeholder="you@example.com" 
+                className="w-full px-6 py-4 rounded-2xl bg-[var(--color-input-bg)] border-2 border-[var(--color-input-border)] text-[var(--color-text-page)] text-lg font-bold outline-none focus:border-[#FF6B35] focus:bg-[var(--color-bg-card)] transition-all duration-300"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className="flex justify-between items-center px-1">
+                <label htmlFor="password" className="text-xs font-black text-[var(--color-text-muted)] uppercase tracking-widest">Password</label>
+                <a href="#" className="text-xs font-black text-[#FF6B35] hover:underline uppercase tracking-widest">Forgot?</a>
+              </div>
+              <input 
+                type="password" 
+                id="password" 
+                placeholder="••••••••" 
+                className="w-full px-6 py-4 rounded-2xl bg-[var(--color-input-bg)] border-2 border-[var(--color-input-border)] text-[var(--color-text-page)] text-lg font-bold outline-none focus:border-[#FF6B35] focus:bg-[var(--color-bg-card)] transition-all duration-300"
+              />
+            </div>
+          </div>
 
-        <div className="text-center mt-4">
-          <p className="text-xs text-[#B2BEC3] dark:text-[#636E72] m-0">
-            By logging in you agree to our{' '}
-            <a href="#" className="text-[#FF6B35] hover:text-[#e55a26] transition-colors duration-300">
-              Terms
-            </a> &amp; <a href="#" className="text-[#FF6B35] hover:text-[#e55a26] transition-colors duration-300">
-              Privacy Policy
-            </a>
-          </p>
-        </div>
-      </form>
-    </div>
+          <button 
+            type="submit"
+            className="w-full py-5 bg-[#FF6B35] text-white rounded-2xl font-black text-lg shadow-xl shadow-[#FF6B35]/30 hover:scale-[1.02] active:scale-95 transition-all duration-300"
+          >
+            Start Learning 🚀
+          </button>
+
+          <div className="text-center">
+            <p className="font-bold text-[var(--color-text-muted)]">
+              New to BrightMinds? {' '}
+              <Link to="/signup" className="text-[#FF6B35] hover:underline">Sign Up Free</Link>
+            </p>
+          </div>
+        </form>
+      </div>
+    </main>
   );
 }

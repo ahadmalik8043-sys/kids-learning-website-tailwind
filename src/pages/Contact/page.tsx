@@ -6,162 +6,93 @@ export default function Contact() {
     alert('Message sent! We will get back to you soon 📬');
   }
 
-  return (
-    <>
-      {/* HERO */}
-      <div className="bg-gradient-to-br from-[#4ECDC4] to-[#3AAFA9] py-14 px-9 text-center">
-        <h1 className="text-white text-[2.4rem] font-black mb-3 leading-tight">
-          Get In Touch 📬
-        </h1>
-        <p className="text-white/92 max-w-[580px] mx-auto mb-0">
-          Have a question or feedback? We'd love to hear from you!
-        </p>
-      </div>
+  const inputCls = "w-full px-6 py-4 rounded-2xl bg-[var(--color-input-bg)] border-2 border-[var(--color-input-border)] text-lg font-bold outline-none focus:border-[#FF6B35] focus:bg-[var(--color-bg-card)] transition-all duration-300";
 
-      {/* CONTACT LAYOUT */}
-      <section className="py-16 px-9 max-w-[1200px] mx-auto max-md:py-10 max-md:px-[18px]">
-        <div className="flex gap-12 flex-wrap items-start">
-          {/* INFO CARDS */}
-          <div className="flex flex-col gap-5 flex-1 min-w-[240px]">
-            <div className="bg-white dark:bg-[#16213E] rounded-[18px] p-6 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]">
-              <span className="text-[2.6rem] mb-2.5 block">📧</span>
-              <h3 className="text-xl font-bold text-[#2D3436] dark:text-[#F0F0F0] mb-2">Email Us</h3>
-              <p className="text-[#636E72] dark:text-[#B2BEC3] text-base m-0">hello@brightminds.com</p>
-            </div>
-            <div className="bg-white dark:bg-[#16213E] rounded-[18px] p-6 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]">
-              <span className="text-[2.6rem] mb-2.5 block">📞</span>
-              <h3 className="text-xl font-bold text-[#2D3436] dark:text-[#F0F0F0] mb-2">Call Us</h3>
-              <p className="text-[#636E72] dark:text-[#B2BEC3] text-base m-0">+44 20 1234 5678</p>
-            </div>
-            <div className="bg-white dark:bg-[#16213E] rounded-[18px] p-6 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]">
-              <span className="text-[2.6rem] mb-2.5 block">📍</span>
-              <h3 className="text-xl font-bold text-[#2D3436] dark:text-[#F0F0F0] mb-2">Our Office</h3>
-              <p className="text-[#636E72] dark:text-[#B2BEC3] text-base m-0">123 Learning Lane, London, UK</p>
-            </div>
-            <div className="bg-white dark:bg-[#16213E] rounded-[18px] p-6 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]">
-              <span className="text-[2.6rem] mb-2.5 block">⏰</span>
-              <h3 className="text-xl font-bold text-[#2D3436] dark:text-[#F0F0F0] mb-2">Support Hours</h3>
-              <p className="text-[#636E72] dark:text-[#B2BEC3] text-base m-0">Mon–Fri, 9am – 5pm GMT</p>
-            </div>
+  return (
+    <main className="w-full transition-colors duration-500">
+      {/* Hero Header */}
+      <section className="bg-gradient-to-br from-[#4ECDC4] to-[#3AAFA9] py-24 px-6 text-center relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-white/5 blur-3xl rounded-full"></div>
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-[4rem] font-black text-white mb-6 leading-tight font-nunito">
+            Get In Touch 📬
+          </h1>
+          <p className="text-xl text-white/90 font-bold">
+            Have a question about our courses? Want to partner with us? Our team of educators is here to help!
+          </p>
+        </div>
+      </section>
+
+      <section className="max-w-[1300px] mx-auto px-6 md:px-10 py-24">
+        <div className="flex flex-col lg:flex-row gap-16 items-start">
+          {/* Info Side */}
+          <div className="lg:w-1/3 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
+            {[
+              { icon: '📧', title: 'Email Us', desc: 'hello@brightminds.com', color: 'bg-[#FF6B35]/10 text-[#FF6B35]' },
+              { icon: '📞', title: 'Call Us', desc: '+1 (555) 123-4567', color: 'bg-[#4ECDC4]/10 text-[#4ECDC4]' },
+              { icon: '📍', title: 'Visit Us', desc: '123 Learning Lane, CA', color: 'bg-[#FFE66D]/10 text-[#E17000]' },
+              { icon: '⏰', title: 'Support', desc: 'Mon-Fri, 9am - 6pm', color: 'bg-[#FF8B94]/10 text-[#FF8B94]' },
+            ].map(card => (
+              <div key={card.title} className="bg-[var(--color-bg-card)] p-8 rounded-[2.5rem] border border-[var(--color-border-subtle)] shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all group">
+                <div className={`w-14 h-14 ${card.color} rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform`}>{card.icon}</div>
+                <h3 className="text-xl font-black mb-2 text-[var(--color-text-page)]">{card.title}</h3>
+                <p className="text-[var(--color-text-muted)] font-bold">{card.desc}</p>
+              </div>
+            ))}
           </div>
 
-          {/* FORM */}
-          <div className="flex-[2] min-w-[300px] bg-white dark:bg-[#16213E] rounded-[18px] p-9 shadow-[0_4px_20px_rgba(0,0,0,0.12)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)] max-md:p-6 max-md:px-[18px]">
-            <h2 className="text-[1.85rem] font-extrabold text-[#2D3436] dark:text-[#F0F0F0] mb-6">
-              Send a Message ✉️
-            </h2>
-            <form id="contact-form" onSubmit={handleSubmit} noValidate>
-              <div className="flex gap-3.5">
-                <div className="flex-1 mb-4">
-                  <label 
-                    htmlFor="contact-first"
-                    className="block font-bold text-[0.9rem] text-[#636E72] dark:text-[#B2BEC3] mb-1.5"
-                  >
-                    First Name
-                  </label>
-                  <input 
-                    type="text" 
-                    id="contact-first" 
-                    name="first_name" 
-                    placeholder="Alex" 
-                    required 
-                    className="w-full py-2.5 px-3.5 border-2 border-[#DFE6E9] dark:border-[#2D3436] rounded-[10px] font-nunito text-base bg-[#FFF9F0] dark:bg-[#1A1A2E] text-[#2D3436] dark:text-[#F0F0F0] transition-all duration-300 outline-none focus:border-[#FF6B35] focus:shadow-[0_0_0_3px_rgba(255,107,53,0.15)] focus:bg-white dark:focus:bg-[#16213E]"
-                  />
+          {/* Form Side */}
+          <div className="lg:flex-1 w-full">
+            <form 
+              onSubmit={handleSubmit}
+              className="bg-[var(--color-bg-card)] p-10 md:p-16 rounded-[3rem] border border-[var(--color-border-subtle)] shadow-2xl flex flex-col gap-8 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#4ECDC4]/5 rounded-bl-[100px]"></div>
+              <h2 className="text-3xl font-black font-nunito relative z-10 text-[var(--color-text-page)]">Send a Message ✉️</h2>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex flex-col gap-2">
+                  <label className="ml-1 text-xs font-black text-[var(--color-text-muted)] uppercase tracking-widest">First Name</label>
+                  <input type="text" placeholder="Alex" className={inputCls} />
                 </div>
-                <div className="flex-1 mb-4">
-                  <label 
-                    htmlFor="contact-last"
-                    className="block font-bold text-[0.9rem] text-[#636E72] dark:text-[#B2BEC3] mb-1.5"
-                  >
-                    Last Name
-                  </label>
-                  <input 
-                    type="text" 
-                    id="contact-last" 
-                    name="last_name" 
-                    placeholder="Smith" 
-                    required 
-                    className="w-full py-2.5 px-3.5 border-2 border-[#DFE6E9] dark:border-[#2D3436] rounded-[10px] font-nunito text-base bg-[#FFF9F0] dark:bg-[#1A1A2E] text-[#2D3436] dark:text-[#F0F0F0] transition-all duration-300 outline-none focus:border-[#FF6B35] focus:shadow-[0_0_0_3px_rgba(255,107,53,0.15)] focus:bg-white dark:focus:bg-[#16213E]"
-                  />
+                <div className="flex flex-col gap-2">
+                  <label className="ml-1 text-xs font-black text-[var(--color-text-muted)] uppercase tracking-widest">Last Name</label>
+                  <input type="text" placeholder="Smith" className={inputCls} />
                 </div>
               </div>
 
-              <div className="mb-4">
-                <label 
-                  htmlFor="contact-email"
-                  className="block font-bold text-[0.9rem] text-[#636E72] dark:text-[#B2BEC3] mb-1.5"
-                >
-                  Email Address
-                </label>
-                <input 
-                  type="email" 
-                  id="contact-email" 
-                  name="email" 
-                  placeholder="you@example.com" 
-                  required 
-                  className="w-full py-2.5 px-3.5 border-2 border-[#DFE6E9] dark:border-[#2D3436] rounded-[10px] font-nunito text-base bg-[#FFF9F0] dark:bg-[#1A1A2E] text-[#2D3436] dark:text-[#F0F0F0] transition-all duration-300 outline-none focus:border-[#FF6B35] focus:shadow-[0_0_0_3px_rgba(255,107,53,0.15)] focus:bg-white dark:focus:bg-[#16213E]"
-                />
+              <div className="flex flex-col gap-2">
+                <label className="ml-1 text-xs font-black text-[var(--color-text-muted)] uppercase tracking-widest">Email Address</label>
+                <input type="email" placeholder="you@example.com" className={inputCls} />
               </div>
 
-              <div className="mb-4">
-                <label 
-                  htmlFor="contact-subject"
-                  className="block font-bold text-[0.9rem] text-[#636E72] dark:text-[#B2BEC3] mb-1.5"
-                >
-                  Subject
-                </label>
-                <input 
-                  type="text" 
-                  id="contact-subject" 
-                  name="subject" 
-                  placeholder="How can we help?" 
-                  required 
-                  className="w-full py-2.5 px-3.5 border-2 border-[#DFE6E9] dark:border-[#2D3436] rounded-[10px] font-nunito text-base bg-[#FFF9F0] dark:bg-[#1A1A2E] text-[#2D3436] dark:text-[#F0F0F0] transition-all duration-300 outline-none focus:border-[#FF6B35] focus:shadow-[0_0_0_3px_rgba(255,107,53,0.15)] focus:bg-white dark:focus:bg-[#16213E]"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label 
-                  htmlFor="contact-message"
-                  className="block font-bold text-[0.9rem] text-[#636E72] dark:text-[#B2BEC3] mb-1.5"
-                >
-                  Message
-                </label>
-                <textarea 
-                  id="contact-message" 
-                  name="message" 
-                  placeholder="Write your message here..." 
-                  required 
-                  className="w-full py-2.5 px-3.5 border-2 border-[#DFE6E9] dark:border-[#2D3436] rounded-[10px] font-nunito text-base bg-[#FFF9F0] dark:bg-[#1A1A2E] text-[#2D3436] dark:text-[#F0F0F0] transition-all duration-300 outline-none resize-y min-h-[100px] focus:border-[#FF6B35] focus:shadow-[0_0_0_3px_rgba(255,107,53,0.15)] focus:bg-white dark:focus:bg-[#16213E]"
-                />
+              <div className="flex flex-col gap-2">
+                <label className="ml-1 text-xs font-black text-[var(--color-text-muted)] uppercase tracking-widest">Message</label>
+                <textarea placeholder="How can we help your child today?" rows={5} className={`${inputCls} resize-none`}></textarea>
               </div>
 
               <button 
-                type="submit" 
-                className="w-full font-nunito font-bold text-[1.2rem] bg-[#FF6B35] text-white border-none rounded-[18px] py-3.5 px-9 cursor-pointer transition-all duration-300 hover:bg-[#e55a26] hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]"
+                type="submit"
+                className="w-full py-5 bg-[#FF6B35] text-white rounded-2xl font-black text-xl shadow-xl shadow-[#FF6B35]/30 hover:scale-[1.02] active:scale-95 transition-all duration-300"
               >
-                Send Message 🚀
+                Send Rocket Message 🚀
               </button>
             </form>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <div className="bg-gradient-to-br from-[#FF6B35] to-[#FF8B94] py-14 px-9 text-center">
-        <h2 className="text-[1.85rem] font-extrabold text-white mb-2.5">
-          Join Our Learning Community 🌟
-        </h2>
-        <p className="text-white/90 mb-7">
-          Start your child's learning adventure today — for free!
-        </p>
-        <Link 
-          to="/signup" 
-          className="inline-block font-nunito font-bold text-base bg-white text-[#FF6B35] rounded-[10px] py-3.5 px-9 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)] no-underline"
-        >
-          Create Free Account 🚀
-        </Link>
-      </div>
-    </>
+      {/* Social Join */}
+      <section className="bg-[var(--color-bg-page-alt)] py-24 px-6 text-center">
+        <h2 className="text-3xl font-black mb-8 text-[var(--color-text-page)]">Follow the Adventure</h2>
+        <div className="flex justify-center gap-6">
+          {['Instagram', 'Facebook', 'YouTube', 'TikTok'].map(platform => (
+            <a key={platform} href="#" className="px-8 py-3 bg-[var(--color-bg-card)] rounded-xl font-black text-[#FF6B35] border-2 border-[var(--color-border-subtle)] hover:bg-[#FF6B35] hover:text-white transition-all no-underline">
+              {platform}
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }

@@ -10,144 +10,99 @@ const activityData = [
 
 export default function Dashboard() {
   return (
-    <div className="min-h-[calc(100vh-68px)] py-10 px-9 max-w-[1200px] mx-auto max-md:py-7 max-md:px-[18px]">
-      {/* WELCOME */}
-      <div className="bg-gradient-to-br from-[#FF6B35] to-[#FF8B94] rounded-[18px] p-8 px-9 mb-9 flex items-center justify-between flex-wrap gap-5">
-        <div>
-          <h1 className="text-white text-[1.9rem] font-black mb-1.5">
+    <main className="max-w-[1300px] mx-auto px-6 md:px-10 py-12 transition-colors duration-500">
+      {/* Welcome Banner */}
+      <div className="bg-gradient-to-r from-[#FF6B35] to-[#FF8B94] rounded-[2.5rem] p-10 md:p-14 mb-16 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group shadow-2xl shadow-[#FF6B35]/20">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
+        <div className="relative z-10 text-center md:text-left">
+          <h1 className="text-3xl md:text-[2.5rem] font-black text-white mb-2 font-nunito">
             Welcome back, Alex! 👋
           </h1>
-          <p className="text-white/90 m-0">
-            You're on a 🔥 7-day streak! Keep it up, Champion!
+          <p className="text-xl text-white/90 font-bold mb-8">
+            You're on a 🔥 7-day streak! Keep exploring, Champion!
           </p>
+          <div className="flex gap-4 justify-center md:justify-start">
+            <Link to="/services" className="px-8 py-3 bg-white text-[#FF6B35] rounded-xl font-black no-underline hover:scale-105 transition-all shadow-lg">My Courses</Link>
+            <Link to="/profile" className="px-8 py-3 bg-white/20 text-white border-2 border-white/30 rounded-xl font-black no-underline hover:bg-white/30 transition-all">View Profile</Link>
+          </div>
         </div>
-        <div className="flex gap-3 flex-wrap">
-          <Link 
-            to="/services" 
-            className="inline-block font-nunito font-bold text-base bg-white text-[#FF6B35] rounded-[10px] py-2.5 px-6 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)] no-underline"
-          >
-            Browse Lessons
-          </Link>
-          <a 
-            href="#activity-table" 
-            className="inline-block font-nunito font-bold text-base bg-transparent text-white border-2 border-white rounded-[10px] py-2.5 px-6 cursor-pointer transition-all duration-300 hover:bg-white hover:text-[#FF6B35] hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)] no-underline"
-          >
-            My Activity
-          </a>
+        <div className="relative z-10 hidden lg:block">
+          <span className="text-[120px] animate-bounce-slow inline-block drop-shadow-2xl">🚀</span>
         </div>
       </div>
 
-      {/* STATS */}
-      <h2 className="text-[1.85rem] font-extrabold text-[#2D3436] dark:text-[#F0F0F0] my-9 mt-9 mb-3">
-        My Progress 📊
-      </h2>
-      <div className="flex flex-wrap justify-start gap-[22px] my-2">
-        <div className="flex flex-col items-center justify-center bg-white dark:bg-[#16213E] rounded-[18px] p-7 px-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 w-[175px] text-center flex-shrink-0 border-t-4 border-[#FF6B35] text-[#FF6B35] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(0,0,0,0.12)]">
-          <span className="text-[2.2rem]">📚</span>
-          <h3 className="text-[2rem] font-extrabold my-2 mt-2 mb-1">42</h3>
-          <p className="text-[0.85rem] text-[#636E72] dark:text-[#B2BEC3] m-0">Lessons Completed</p>
-        </div>
-        <div className="flex flex-col items-center justify-center bg-white dark:bg-[#16213E] rounded-[18px] p-7 px-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 w-[175px] text-center flex-shrink-0 border-t-4 border-[#FFE66D] text-[#E17000] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(0,0,0,0.12)]">
-          <span className="text-[2.2rem]">⭐</span>
-          <h3 className="text-[2rem] font-extrabold my-2 mt-2 mb-1">380</h3>
-          <p className="text-[0.85rem] text-[#636E72] dark:text-[#B2BEC3] m-0">Stars Earned</p>
-        </div>
-        <div className="flex flex-col items-center justify-center bg-white dark:bg-[#16213E] rounded-[18px] p-7 px-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 w-[175px] text-center flex-shrink-0 border-t-4 border-[#4ECDC4] text-[#4ECDC4] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(0,0,0,0.12)]">
-          <span className="text-[2.2rem]">🔥</span>
-          <h3 className="text-[2rem] font-extrabold my-2 mt-2 mb-1">7</h3>
-          <p className="text-[0.85rem] text-[#636E72] dark:text-[#B2BEC3] m-0">Day Streak</p>
-        </div>
-        <div className="flex flex-col items-center justify-center bg-white dark:bg-[#16213E] rounded-[18px] p-7 px-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 w-[175px] text-center flex-shrink-0 border-t-4 border-[#FF8B94] text-[#FF8B94] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(0,0,0,0.12)]">
-          <span className="text-[2.2rem]">🏆</span>
-          <h3 className="text-[2rem] font-extrabold my-2 mt-2 mb-1">5</h3>
-          <p className="text-[0.85rem] text-[#636E72] dark:text-[#B2BEC3] m-0">Badges Earned</p>
-        </div>
-        <div className="flex flex-col items-center justify-center bg-white dark:bg-[#16213E] rounded-[18px] p-7 px-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 w-[175px] text-center flex-shrink-0 border-t-4 border-[#A8E6CF] text-[#27AE60] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(0,0,0,0.12)]">
-          <span className="text-[2.2rem]">✅</span>
-          <h3 className="text-[2rem] font-extrabold my-2 mt-2 mb-1">88%</h3>
-          <p className="text-[0.85rem] text-[#636E72] dark:text-[#B2BEC3] m-0">Quiz Accuracy</p>
-        </div>
+      {/* Stats Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        {[
+          { label: 'Completed', value: '42', icon: '📚', color: 'bg-[#FF6B35]/10 text-[#FF6B35]' },
+          { label: 'Stars Earned', value: '380', icon: '⭐', color: 'bg-[#FFE66D]/10 text-[#E17000]' },
+          { label: 'Streak', value: '7 Days', icon: '🔥', color: 'bg-[#FF8B94]/10 text-[#FF8B94]' },
+          { label: 'Badges', value: '12', icon: '🏆', color: 'bg-[#4ECDC4]/10 text-[#4ECDC4]' },
+        ].map(stat => (
+          <div key={stat.label} className="bg-[var(--color-bg-card)] p-8 rounded-[2rem] border border-[var(--color-border-subtle)] shadow-xl text-center hover:scale-105 transition-all duration-300">
+            <div className={`w-14 h-14 ${stat.color} rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4`}>{stat.icon}</div>
+            <div className="text-3xl font-black mb-1 text-[var(--color-text-page)]">{stat.value}</div>
+            <p className="text-xs font-black text-[var(--color-text-muted)] uppercase tracking-widest">{stat.label}</p>
+          </div>
+        ))}
       </div>
 
-      {/* TABLE */}
-      <h2 
-        id="activity-table" 
-        className="text-[1.85rem] font-extrabold text-[#2D3436] dark:text-[#F0F0F0] my-9 mt-9 mb-3"
-      >
-        Recent Activity 📋
-      </h2>
-      <div className="w-full overflow-x-auto mt-5">
-        <table className="w-full border-collapse rounded-[10px] overflow-hidden text-[0.95rem] bg-white dark:bg-[#16213E] shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] min-w-[560px] max-w-full">
-          <thead className="bg-[#FF6B35] text-white">
-            <tr>
-              <th className="py-3.5 px-4 text-left font-extrabold text-[0.85rem] tracking-wider uppercase">#</th>
-              <th className="py-3.5 px-4 text-left font-extrabold text-[0.85rem] tracking-wider uppercase">Lesson</th>
-              <th className="py-3.5 px-4 text-left font-extrabold text-[0.85rem] tracking-wider uppercase">Subject</th>
-              <th className="py-3.5 px-4 text-left font-extrabold text-[0.85rem] tracking-wider uppercase">Date</th>
-              <th className="py-3.5 px-4 text-left font-extrabold text-[0.85rem] tracking-wider uppercase">Score</th>
-              <th className="py-3.5 px-4 text-left font-extrabold text-[0.85rem] tracking-wider uppercase">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {activityData.map((row, index) => (
-              <tr 
-                key={row.id}
-                className={`${index % 2 === 0 ? 'bg-white dark:bg-[#16213E]' : 'bg-[#FFF3EC] dark:bg-[rgba(255,107,53,0.08)]'} hover:bg-[rgba(78,205,196,0.15)] cursor-pointer transition-colors duration-300`}
-              >
-                <td className="py-3 px-4 border-b border-[#DFE6E9] dark:border-[#2D3436] align-middle text-[#2D3436] dark:text-[#F0F0F0]">{row.id}</td>
-                <td className="py-3 px-4 border-b border-[#DFE6E9] dark:border-[#2D3436] align-middle text-[#2D3436] dark:text-[#F0F0F0]">{row.lesson}</td>
-                <td className="py-3 px-4 border-b border-[#DFE6E9] dark:border-[#2D3436] align-middle text-[#2D3436] dark:text-[#F0F0F0]">{row.subject}</td>
-                <td className="py-3 px-4 border-b border-[#DFE6E9] dark:border-[#2D3436] align-middle text-[#2D3436] dark:text-[#F0F0F0]">{row.date}</td>
-                <td className="py-3 px-4 border-b border-[#DFE6E9] dark:border-[#2D3436] align-middle text-[#2D3436] dark:text-[#F0F0F0]">{row.score}</td>
-                <td className="py-3 px-4 border-b border-[#DFE6E9] dark:border-[#2D3436] align-middle text-[#2D3436] dark:text-[#F0F0F0]">{row.status}</td>
+      {/* Activity Table */}
+      <div className="bg-[var(--color-bg-card)] rounded-[2.5rem] p-8 md:p-12 border border-[var(--color-border-subtle)] shadow-2xl mb-16">
+        <div className="flex items-center justify-between mb-10 flex-wrap gap-4">
+          <h2 className="text-2xl font-black font-nunito text-[var(--color-text-page)]">Recent Learning Activity 📋</h2>
+          <button className="px-6 py-2 bg-[var(--color-bg-page-alt)] text-[var(--color-text-page)] rounded-xl font-black text-xs uppercase tracking-widest hover:bg-[#FF6B35]/10 hover:text-[#FF6B35] transition-all">Download Report</button>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left min-w-[700px]">
+            <thead>
+              <tr className="border-b border-[var(--color-border-subtle)] text-xs font-black text-[var(--color-text-muted)] uppercase tracking-widest">
+                <th className="pb-6 px-4">Lesson</th>
+                <th className="pb-6 px-4">Subject</th>
+                <th className="pb-6 px-4">Date</th>
+                <th className="pb-6 px-4">Score</th>
+                <th className="pb-6 px-4">Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="font-bold">
+              {activityData.map((row) => (
+                <tr key={row.id} className="border-b border-[var(--color-border-subtle)]/50 hover:bg-[var(--color-bg-page-alt)] transition-colors group">
+                  <td className="py-6 px-4 text-[var(--color-text-page)] group-hover:text-[#FF6B35] transition-colors">{row.lesson}</td>
+                  <td className="py-6 px-4 text-[var(--color-text-muted)]">{row.subject}</td>
+                  <td className="py-6 px-4 text-sm text-[var(--color-text-muted)]">{row.date}</td>
+                  <td className="py-6 px-4">
+                    <span className={`px-4 py-1.5 rounded-full text-xs font-black ${parseInt(row.score) > 80 ? 'bg-[rgba(34,197,94,0.1)] text-green-600' : 'bg-[#FF6B35]/10 text-[#FF6B35]'}`}>
+                      {row.score}
+                    </span>
+                  </td>
+                  <td className="py-6 px-4 text-sm text-[var(--color-text-muted)]">{row.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      {/* RECOMMENDED */}
-      <h2 className="text-[1.85rem] font-extrabold text-[#2D3436] dark:text-[#F0F0F0] my-9 mt-9 mb-3">
-        Recommended for You 💡
-      </h2>
-      <div className="flex flex-wrap justify-center gap-[22px] my-2">
-        <div className="flex flex-col bg-white dark:bg-[#16213E] rounded-[18px] p-6 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 w-[260px] flex-shrink-0 border-l-4 border-[#FF6B35] hover:-translate-y-1.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]">
-          <span className="text-[2.6rem] mb-2.5 block">➕</span>
-          <h3 className="text-xl font-bold text-[#2D3436] dark:text-[#F0F0F0] mb-2">Fractions Made Easy</h3>
-          <p className="text-[#636E72] dark:text-[#B2BEC3] text-base mb-2.5">Master halves, quarters, and thirds with fun pizza examples!</p>
-          <p className="text-[0.82rem] text-[#B2BEC3] dark:text-[#636E72] mb-2.5">Mathematics · 20 min · ⭐ 30 stars</p>
-          <Link 
-            to="/services" 
-            className="text-[#FF6B35] font-bold pt-3 mt-auto inline-block hover:text-[#e55a26] transition-colors duration-300 no-underline"
-          >
-            Start Lesson →
-          </Link>
-        </div>
-        <div className="flex flex-col bg-white dark:bg-[#16213E] rounded-[18px] p-6 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 w-[260px] flex-shrink-0 border-l-4 border-[#4ECDC4] hover:-translate-y-1.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]">
-          <span className="text-[2.6rem] mb-2.5 block">🔬</span>
-          <h3 className="text-xl font-bold text-[#2D3436] dark:text-[#F0F0F0] mb-2">States of Matter</h3>
-          <p className="text-[#636E72] dark:text-[#B2BEC3] text-base mb-2.5">Explore solids, liquids, and gases through cool experiments!</p>
-          <p className="text-[0.82rem] text-[#B2BEC3] dark:text-[#636E72] mb-2.5">Science · 25 min · ⭐ 35 stars</p>
-          <Link 
-            to="/services" 
-            className="text-[#FF6B35] font-bold pt-3 mt-auto inline-block hover:text-[#e55a26] transition-colors duration-300 no-underline"
-          >
-            Start Lesson →
-          </Link>
-        </div>
-        <div className="flex flex-col bg-white dark:bg-[#16213E] rounded-[18px] p-6 shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] transition-all duration-300 w-[260px] flex-shrink-0 border-l-4 border-[#FFE66D] hover:-translate-y-1.5 hover:shadow-[0_8px_30px_rgba(255,107,53,0.22)]">
-          <span className="text-[2.6rem] mb-2.5 block">📖</span>
-          <h3 className="text-xl font-bold text-[#2D3436] dark:text-[#F0F0F0] mb-2">Story Writing</h3>
-          <p className="text-[#636E72] dark:text-[#B2BEC3] text-base mb-2.5">Learn to write amazing stories with characters and plot twists!</p>
-          <p className="text-[0.82rem] text-[#B2BEC3] dark:text-[#636E72] mb-2.5">English · 30 min · ⭐ 40 stars</p>
-          <Link 
-            to="/services" 
-            className="text-[#FF6B35] font-bold pt-3 mt-auto inline-block hover:text-[#e55a26] transition-colors duration-300 no-underline"
-          >
-            Start Lesson →
-          </Link>
+      {/* Recommended Lessons */}
+      <div className="space-y-8">
+        <h2 className="text-3xl font-black font-nunito text-[var(--color-text-page)]">Pick Up Where You Left Off 💡</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            { title: 'Fractions Made Easy', subject: 'Math', time: '20m', icon: '➕', color: 'border-[#FF6B35]' },
+            { title: 'States of Matter', subject: 'Science', time: '25m', icon: '🔬', color: 'border-[#4ECDC4]' },
+            { title: 'Story Writing 101', subject: 'English', time: '30m', icon: '📖', color: 'border-[#FFE66D]' },
+          ].map(lesson => (
+            <div key={lesson.title} className={`bg-[var(--color-bg-card)] p-8 rounded-[2.5rem] border border-[var(--color-border-subtle)] border-l-8 ${lesson.color} shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group`}>
+              <div className="text-4xl mb-6 group-hover:scale-125 transition-transform duration-500">{lesson.icon}</div>
+              <h3 className="text-xl font-black mb-2 text-[var(--color-text-page)]">{lesson.title}</h3>
+              <p className="text-xs font-black text-[var(--color-text-muted)] uppercase tracking-widest mb-6">{lesson.subject} · {lesson.time} · ⭐ 30 stars</p>
+              <Link to="/services" className="inline-block font-black text-[#FF6B35] hover:gap-4 transition-all flex items-center gap-2 no-underline">
+                Start Lesson <span className="text-lg">→</span>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
